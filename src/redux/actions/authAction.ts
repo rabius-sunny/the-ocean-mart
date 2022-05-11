@@ -1,25 +1,24 @@
-import { IAuthData } from 'utils/types';
-import { ActionType } from 'redux/actionTypes';
+import { ActionType } from 'redux/actionTypes'
 
 interface loginSuccessAction {
-  type: ActionType.LOGIN_SUCCESS;
-  payload: IAuthData;
+  type: ActionType.LOGIN_SUCCESS
+  payload: IAuthData
 }
 
 interface loginPendingAction {
-  type: ActionType.LOGIN_PENDING;
+  type: ActionType.LOGIN_PENDING
 }
 
 interface loginErrorAction {
-  type: ActionType.LOGIN_ERROR;
-  payload: string;
+  type: ActionType.LOGIN_ERROR
+  payload: string
 }
 interface logoutAction {
-  type: ActionType.LOGOUT;
+  type: ActionType.LOGOUT
 }
 
 export type AuthAction =
   | loginSuccessAction
   | loginPendingAction
   | loginErrorAction
-  | logoutAction;
+  | logoutAction

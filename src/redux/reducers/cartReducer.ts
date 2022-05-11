@@ -1,6 +1,5 @@
-import { CartAction } from 'redux/actions/cartAction';
-import { ActionType } from 'redux/actionTypes';
-import { IProduct } from 'utils/types';
+import { CartAction } from 'redux/actions/cartAction'
+import { ActionType } from 'redux/actionTypes'
 
 const cartReducer = (
   state: IProduct[] = [],
@@ -8,16 +7,16 @@ const cartReducer = (
 ): IProduct[] => {
   switch (action.type) {
     case ActionType.ADD_TO_CART:
-      return [...state, action.payload];
+      return [...state, action.payload]
     case ActionType.REMOVE_FROM_CART: {
-      const newState = state.filter((item) => item._id !== action.payload);
-      return newState;
+      const newState = state.filter(item => item._id !== action.payload)
+      return newState
     }
     case ActionType.CLEAR_CART:
-      return [];
+      return []
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default cartReducer;
+export default cartReducer

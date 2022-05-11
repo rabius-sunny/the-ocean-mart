@@ -1,8 +1,20 @@
+import SingleProduct from 'components/shared/SingleProduct'
 
-const Products = () => {
-  return (
-    <div>Products</div>
-  )
+interface IProps {
+  products: IProduct[] | null
+  isLoading: boolean
 }
 
-export default Products
+export default function Products({ products }: IProps) {
+  return (
+    <>
+      <div className="container">
+        <div className="row gap-4">
+          {products?.map((product: IProduct) => (
+            <SingleProduct product={product} />
+          ))}
+        </div>
+      </div>
+    </>
+  )
+}

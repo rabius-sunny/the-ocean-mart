@@ -1,23 +1,20 @@
-import React, { Suspense } from "react"
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
-} from "react-router-dom"
-const Home = React.lazy(() => import("../pages/Home"))
-const Help = React.lazy(() => import("../pages/Help"))
+import React, { Suspense } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+const Home = React.lazy(() => import('../pages/Home'))
+const Help = React.lazy(() => import('../pages/Help'))
 
 const RouterContainer = ({ children }: any) => {
-    return <Router>
-
-        {children}
+  return (
+    <Router>
+      {children}
+      <Suspense fallback={<div>Loading...</div>}>
         <Routes>
-            <Suspense fallback={<div>Loading...</div>}>
-                <Route path="/" element={<Home />} />
-                <Route path="/help" element={<Help />} />
-            </Suspense>
+          <Route path='/' element={<Home />} />
+          <Route path='/help' element={<Help />} />
         </Routes>
+      </Suspense>
     </Router>
+  )
 }
 
 export default RouterContainer

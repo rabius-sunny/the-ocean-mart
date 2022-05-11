@@ -1,35 +1,35 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 
-type StatusType = 'idle' | 'pending' | 'success' | 'error';
+type StatusType = 'idle' | 'loading' | 'success' | 'error'
 const useAsync = <T>(asyncFunction: () => Promise<T>) => {
-  const [data, setData] = useState<T | null>(null);
-  const [status, setStatus] = useState<StatusType>('idle');
-  const [error, setError] = useState<string | null>(null);
+  const [data, setData] = useState<T | null>(null)
+  const [status, setStatus] = useState<StatusType>('idle')
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    setStatus('pending');
-    setData(null);
-    setError(null);
+    setStatus('loading')
+    setData(null)
+    setError(null)
     asyncFunction()
-      .then((res) => {
-        setData(res);
-        setStatus('success');
-        setError(null);
+      .then(res => {
+        setData(res)
+        setStatus('success')
+        setError(null)
       })
-      .catch((err) => {
-        setError(err);
-        setStatus('error');
-        setData(null);
-      });
-  }, [asyncFunction]);
+      .catch(err => {
+        setError(err)
+        setStatus('error')
+        setData(null)
+      })
+  }, [asyncFunction])
 
   return {
     data,
     error,
-    isLoading: status === 'pending',
+    isLoading: status === 'loading',
     isSuccess: status === 'success',
     isError: status === 'error',
-  };
-};
+  }
+}
 
-export default useAsync;
+export default useAsync

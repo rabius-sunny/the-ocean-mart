@@ -1,18 +1,17 @@
-import { IAuthData } from 'utils/types';
-import { AuthAction } from './../actions/authAction';
-import { ActionType } from 'redux/actionTypes';
+import { AuthAction } from './../actions/authAction'
+import { ActionType } from 'redux/actionTypes'
 
 interface IAuthState {
-  data: IAuthData | null;
-  status: 'idle' | 'pending' | 'success' | 'error';
-  error: null | string;
+  data: IAuthData | null
+  status: 'idle' | 'pending' | 'success' | 'error'
+  error: null | string
 }
 
 const initialState: IAuthState = {
   data: null,
   status: 'idle',
   error: null,
-};
+}
 
 const authReducer = (
   state: IAuthState = initialState,
@@ -24,24 +23,24 @@ const authReducer = (
         data: null,
         status: 'pending',
         error: null,
-      };
+      }
     case ActionType.LOGIN_SUCCESS:
       return {
         data: action.payload,
         status: 'success',
         error: null,
-      };
+      }
     case ActionType.LOGIN_ERROR:
       return {
         data: null,
         status: 'error',
         error: action.payload,
-      };
+      }
     case ActionType.LOGOUT:
-      return initialState;
+      return initialState
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default authReducer;
+export default authReducer
